@@ -1,0 +1,15 @@
+services:
+  container:
+    image: ricardokleber/autopsy:latest
+    hostname: autopsy
+    container_name: autopsy
+    cap_add:
+      - SYS_ADMIN
+      - MKNOD
+    environment:
+      - JAVA_TOOL_OPTIONS=-Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=on
+    shm_size: "2gb"
+    privileged: true
+    devices:
+      - "/dev/fuse:/dev/fuse"
+      - "/dev/dri:/dev/dri"
